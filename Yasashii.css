@@ -1,0 +1,567 @@
+/* ==UserStyle==
+@name           Yasashii
+@description    官方缺美工，咱就自己上！比WF官方主题好看亿点点~
+@namespace      github.com/openstyles/stylus
+@version        1.1
+@author         YYYYang
+@license 		MIT
+==/UserStyle== */
+@-moz-document regexp("workflowy.com") {
+	/*------------ BODY ------------- */
+	:root {
+		--bg-in: hsla(35, 36%, 96%, 1);
+		/* 	内板色 */
+		--bg-edge: hsla(34, 34%, 90%, 1);
+		/* 边缘色 */
+	}
+
+
+	._theme-default {
+
+		.pageContainer {
+			background: var(--bg-edge);
+		}
+
+		.pageContainer .page {
+			background: var(--bg-in);
+		}
+
+		.header {
+			background: var(--bg-edge);
+			border-image: linear-gradient(to right, hsla(36, 38%, 73%, 1), rgba(66, 72, 75, 0) 65%) 1;
+		}
+
+		.leftBar > div {
+			background: var(--bg-edge);
+		}
+	}
+
+
+	._theme-dark {
+
+		.header {
+			/*------------ Header 渐进色底线 ------------- */
+			border-image: linear-gradient(to right, rgb(66, 72, 75), 40%, rgba(66, 72, 75, 0) 65%) 1;
+		}
+	}
+}
+
+@-moz-document domain("workflowy.com") {
+	/*------------ TODO Checkbox ------------- */
+	/* 让todo方块节点与bullet普通节点 竖直对齐 */
+	.checkmark:not(.boardColumn):not(.boardCard):not(.dashboard-card) > .name {
+		a.bullet {
+			opacity: 0;
+		}
+
+		> .prefix,
+		> .content {
+			left: -22px;
+		}
+	}
+
+	.checkmark:not(.boardColumn):not(.boardCard):not(.dashboard-card) > .name:hover {
+		a.bullet {
+			opacity: 1;
+			transition: opacity 3s ease-in-out;
+		}
+
+		> .prefix,
+		> .content {
+			-webkit-animation: slide-right 1.2s 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+			animation: slide-right 0.2s 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+		}
+
+		> .prefix label:hover {
+			-webkit-animation: shake-bottom 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+			animation: shake-bottom 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+		}
+	}
+
+
+	/* * ----------------------------------------
+    /* * animation slide-right
+    /* * ---------------------------------------- */
+	@-webkit-keyframes slide-right {
+		0% {
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+		}
+
+		100% {
+			-webkit-transform: translateX(22px);
+			transform: translateX(22px);
+		}
+	}
+
+	@keyframes slide-right {
+		0% {
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+		}
+
+		100% {
+			-webkit-transform: translateX(22px);
+			transform: translateX(22px);
+		}
+	}
+
+
+	/* * ----------------------------------------
+    /* * animation shake-bottom
+    /* * ---------------------------------------- */
+	@-webkit-keyframes shake-bottom {
+
+		0%,
+		100% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+			-webkit-transform-origin: 50% 100%;
+			transform-origin: 50% 100%;
+		}
+
+		10% {
+			-webkit-transform: rotate(2deg);
+			transform: rotate(2deg);
+		}
+
+		20%,
+		40%,
+		60% {
+			-webkit-transform: rotate(-4deg);
+			transform: rotate(-4deg);
+		}
+
+		30%,
+		50%,
+		70% {
+			-webkit-transform: rotate(4deg);
+			transform: rotate(4deg);
+		}
+
+		80% {
+			-webkit-transform: rotate(-2deg);
+			transform: rotate(-2deg);
+		}
+
+		90% {
+			-webkit-transform: rotate(2deg);
+			transform: rotate(2deg);
+		}
+	}
+
+	@keyframes shake-bottom {
+
+		0%,
+		100% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+			-webkit-transform-origin: 50% 100%;
+			transform-origin: 50% 100%;
+		}
+
+		10% {
+			-webkit-transform: rotate(2deg);
+			transform: rotate(2deg);
+		}
+
+		20%,
+		40%,
+		60% {
+			-webkit-transform: rotate(-4deg);
+			transform: rotate(-4deg);
+		}
+
+		30%,
+		50%,
+		70% {
+			-webkit-transform: rotate(4deg);
+			transform: rotate(4deg);
+		}
+
+		80% {
+			-webkit-transform: rotate(-2deg);
+			transform: rotate(-2deg);
+		}
+
+		90% {
+			-webkit-transform: rotate(2deg);
+			transform: rotate(2deg);
+		}
+	}
+}
+
+@-moz-document domain("workflowy.com") {
+	/*------------ 字体 IBM Plex Mono ------------- */
+	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+	.dialog-box,
+	.breadcrumbs,
+	.content,
+	.MobileBreadcrumbs {
+		font-family: 'IBM Plex Mono', monospace !important;
+	}
+}
+
+@-moz-document domain("workflowy.com") {
+	/*------------ Backlink 双链索引 ------------- */
+	:root {
+		--referencesBG: hsla(201, 13%, 15%, 1.00);
+	}
+
+	.references.boardCard {
+		padding-top: 1px;
+		border-radius: 10px;
+	}
+
+	._theme-dark .references.boardCard {
+		background: var(--referencesBG);
+		border: 1px solid hsla(203, 5%, 28%, 1.00);
+	}
+}
+
+
+
+@-moz-document domain("workflowy.com") {
+	/*------------ Board Kanban 看板视图 放大视野 ------------- */
+	.board {
+		/* 	zoom: 0.8; */
+		zoom: 0.94;
+	}
+}
+
+@-moz-document domain("workflowy.com") {
+	/*------------ Hover Cursor 鼠标悬停在链接跳转时的光标样式  ↔ + ↗ ------------- */
+	/* 	cursor: cell; */
+	/* 外站超链接 */
+	.contentLink:hover {
+		cursor: alias;
+		/* ↗  */
+	}
+
+	/* 站内链接 */
+	.contentLink[href^="https://beta.workflowy.com"]:hover,
+	.contentLink[href^="https://workflowy.com"]:hover {
+		cursor: ne-resize;
+		/* ↔  */
+	}
+}
+
+
+@-moz-document domain("workflowy.com") {
+	/*------------ Underline 下划线 黄线 ------------- */
+	u {
+		text-decoration: none !important;
+		background: linear-gradient(#ffffff00 70%, #FFCF02 5%);
+		/* 		padding-bottom: 2px; */
+		transition: background-color 0.5s ease-in-out, height 0.5s ease-in-out;
+	}
+
+	/* 鼠标悬停阴影 */
+	u:hover {
+		background-color: #8686865e;
+		border-radius: 4px 4px 0 0;
+	}
+}
+
+@-moz-document domain("workflowy.com") {
+	/*------------ 代码块 ------------- */
+	:root {
+		--background-alt-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.16' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+		--background-alt-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.16' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+
+		--code-background-light: var(--background-alt-light);
+		--code-background-dark: var(--background-alt-dark);
+
+		--background-light-border: #E0E0E0;
+		--background-dark-border: #767272;
+	}
+
+	._theme-default .code-block > .name > .content {
+		background: var(--code-background-light);
+		border: 2px dashed var(--background-light-border);
+	}
+
+	._theme-dark .code-block > .name > .content {
+		background: var(--code-background-dark);
+		border: 2px dashed var(--background-dark-border);
+	}
+}
+
+
+
+@-moz-document domain("workflowy.com") {
+	/*------------ Quote 引用块 ------------- */
+	:root {
+		/* 			--quote-bg-light: 	 */
+		/* 		--quote-bg-dark: #767272; */
+	}
+
+	._theme-default {
+
+		.quote-block > .name > .content {
+
+			/* 			border-left-width: 4px; */
+			/* padding: unset; */
+			padding: 1px;
+			/* 		padding-top: 0px; */
+			background: #086DDD21;
+			background: linear-gradient(135deg, #086DDD21, #FFFFFF);
+			border-top-left-radius: 8px;
+			border-bottom-left-radius: 8px;
+
+
+			> .innerContentContainer {
+				border-width: 3px;
+				border-radius: 4px;
+				border-left-color: #086DDD;
+				/* 			border-left: none; */
+			}
+		}
+
+		.quote-block > .name > .content:after {
+			content: "";
+			position: absolute;
+			top: auto;
+			right: 0;
+			bottom: 0;
+			left: auto;
+			width: 1.5em;
+			height: 1.5em;
+			background: linear-gradient(to bottom right, #086DDD21, 50%, #FFFFFF 50%);
+			-webkit-backdrop-filter: blur(2.5px);
+			backdrop-filter: blur(2.5px);
+			transition: all 0.2s ease-in-out;
+			box-shadow: -4px -1px 2px 0px rgba(0, 0, 0, 0.2);
+		}
+
+		.quote-block > .name > .content:hover:after {
+			width: 0;
+			height: 0;
+		}
+	}
+
+	._theme-dark .quote-block > .name > .content {
+		/* 		background: var(--quote-bg-dark); */
+		/* 		border: 2px dashed var(--background-dark-border); */
+	}
+}
+
+
+@-moz-document domain("workflowy.com") {
+	/*------------ Tag 标签 ------------- */
+	.contentTag {
+		padding: 0 6px !important;
+		border-radius: 10px !important;
+		font-size: 0.8em;
+		border: 0.1em solid #FFFFFF8C;
+		/* 				font-style: italic; */
+		/* 				line-height: 10px; */
+		/* 修正添加tag后 多出来的细微1px行高差 */
+		.contentTagText {
+			text-decoration: none !important;
+			/* 			color: var(--wf-yellow-200); */
+		}
+	}
+
+	.contentTag:hover {
+		/* 				filter: brightness(125%) !important; */
+		transition: 200ms ease-in-out;
+		/* 				cursor: cell; */
+		font-size: 1em;
+	}
+
+	/*tag 标签颜色  */
+	/* 	.contentTag[data-val="#purple"] */
+}
+
+
+
+
+
+@-moz-document domain("workflowy.com") {
+	/*------------ Kanban 看板视图 ------------- */
+	/* 看板边距微调 视野更宽 */
+	._theme-default .page:has( > .root.board) {
+
+		padding-top: 20px;
+		padding-left: 40px;
+
+		.board {
+
+			/* 			padding: 20px 0; */
+			> .children {
+
+				/* 	padding: 10px; */
+				/* border-radius: 5%; */
+				.boardColumn {
+
+					/* overflow: hidden; */
+					background-color: #F8F9FB;
+					margin-right: 10px;
+					/* padding-top: 14px; */
+					border-radius: 12px;
+
+
+					> .name {
+						background-color: #FFFFFF;
+						border: 1px solid #C7CDD7;
+						border-radius: 8px;
+						margin: 12px 9px;
+						padding: 0px 0px 6px 20px;
+						font-size: 20px;
+						font-weight: normal;
+						box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, .1);
+						position: relative;
+						> .content {
+							line-height: 26px;
+						}
+
+
+						a.bullet {
+							/* 	⊙ Zoom指示器 */
+							/*  position: absolute; */
+							/* 	background: rgba(129, 129, 129, .35); */
+							top: 14px !important;
+							right: 16px;
+							/* 							bottom: 20%; */
+							/* 							left: calc(100% - 22px); */
+							/* 	left: 10px; */
+						}
+
+						a.bullet:hover {
+							/* 	BUG  阴影位置		 */
+							background: rgba(129, 129, 129, .35);
+							background: transparent;
+							/* 			bottom: -13px; */
+							/* 	left: -3px; */
+							/* 	left: calc(100% - 22px); */
+						}
+
+						> a.bullet::before {
+							/* 大圈 */
+							border: 1px dashed #6D686896;
+
+							background: rgba(129, 129, 129, .35);
+							width: 27px;
+							height: 27px;
+							/* top: 4px; */
+							/* left: calc(100% - 22px); */
+						}
+
+						> a.bullet::after {
+							/* 中圈 */
+							width: 14px;
+							height: 14px;
+							top: -3px;
+							left: -3px;
+						}
+
+						> a.bullet svg {
+							/* 小点 */
+							top: -4px;
+							right: 4px;
+						}
+
+
+
+						/* 看板标题的折叠箭头 */
+						/* 	BUG 有些页面偏移 */
+						> a.expand > div > svg {
+							position: relative;
+							left: -21px;
+							top: -10px;
+							color: rgb(86, 156, 214);
+							/* 	width: 28px; */
+							/* 	height: 28px; */
+						}
+
+						> a.expand > div > svg:hover {
+							width: 36px;
+							height: 36px;
+							transition: width 0.2s ease-in-out;
+						}
+
+
+						/* 汉堡菜单按钮 ⁝ */
+						> .itemMenu svg {
+							/* 							position: relative; */
+							position: absolute;
+							right: 12px;
+							top: -8px;
+							width: 32px;
+							height: 17px;
+							transform: rotateZ(90deg);
+							color: rgb(5, 98, 174);
+							background-color: rgba(110, 158, 188, .12);
+						}
+					}
+
+					/* 看板卡片 */
+					.children .boardCard {
+
+						background-color: #FFFFFF;
+						/* 	border-radius: 0 10px 10px 0; */
+						border-radius: 10px;
+
+						/* BUG 后面的(…) 会被遮挡 */
+						margin-left: -1px !important;
+						margin-right: 9px !important;
+
+						/* 	看板文字内容边距尽量缩小??? */
+						> .name {
+							> .content {
+								padding-top: 0px;
+								/* padding-right: 0px; */
+								/* border-radius: 4px; */
+							}
+
+							> a.expand > div > svg {
+								position: relative;
+								left: 12px;
+								top: -4px;
+								color: rgb(86, 156, 214);
+							}
+
+							> a.expand > div > svg:hover {
+								width: 32px;
+								height: 32px;
+								transition: width 0.2s ease-in-out;
+							}
+						}
+					}
+
+					::-webkit-scrollbar {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	/* 	Bullet视图下的 mini看板 */
+	.page .root:not(.board) .board {
+		.children {
+			padding-bottom: 10px;
+		}
+
+		::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+
+	/* nameButtons  */
+}
+
+@-moz-document domain("workflowy.com") {
+	/*------------ 小彩蛋 ------------- */
+	/* 当节点数用量超额时 忽视并屏蔽超额提示板 以此获得无限量的节点额度 */
+	div#app > .pageContainer > div:last-child:not(.page):has( > div > button > span) {
+		display: none;
+	}
+
+	div#app > div.dialog-backdrop:has( > div.dialog-box > button.primary) {
+		display: none;
+	}
+}
