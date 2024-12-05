@@ -2,10 +2,9 @@
 @name           Yasashii
 @description    官方缺美工，咱就自己上！比WF官方主题好看亿点点~
 @namespace      github.com/openstyles/stylus
-@version        0.1
+@version        1.0
 @author         YYYYang
 @license 		MIT
-@downloadURL https://update.greasyfork.org/scripts/519149/Workflowy%E5%AE%98%E6%96%B9%E7%BC%BA%E7%BE%8E%E5%B7%A5%EF%BC%8C%E5%92%B1%E5%B0%B1%E8%87%AA%E5%B7%B1%E4%B8%8A%EF%BC%81.user.css
 @updateURL https://update.greasyfork.org/scripts/519149/Workflowy%E5%AE%98%E6%96%B9%E7%BC%BA%E7%BE%8E%E5%B7%A5%EF%BC%8C%E5%92%B1%E5%B0%B1%E8%87%AA%E5%B7%B1%E4%B8%8A%EF%BC%81.user.css
 ==/UserStyle== */
 @-moz-document regexp("workflowy.com") {
